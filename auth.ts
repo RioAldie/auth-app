@@ -17,7 +17,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         }
 
         const { email, password } = credentials;
-        console.log({ email, password });
 
         const res = await fetch(
           `${config.env.apiEndpoint}/auth/login`,
@@ -38,7 +37,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           return null;
         }
         const { data } = await res.json();
-        console.log('Parsed data:', data);
 
         const { accessToken, refreshToken } = data;
 

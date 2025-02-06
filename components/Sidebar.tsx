@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 import { adminSideBarLinks } from '@/constant';
 import Link from 'next/link';
+import ButtonLogout from './ButtonLogout';
 
 const Sidebar = () => {
   const pathname = usePathname();
@@ -54,18 +55,10 @@ const Sidebar = () => {
             );
           })}
         </div>
-      </div>
-
-      {/* <div className="user">
-        <div className="flex flex-col max-md:hidden">
-          <p className="font-semibold text-dark-200">
-            {session?.user?.name}
-          </p>
-          <p className="text-xs text-light-500">
-            {session?.user?.email}
-          </p>
+        <div>
+          <ButtonLogout />
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };

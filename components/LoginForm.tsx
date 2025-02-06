@@ -1,6 +1,7 @@
 'use client';
 
-import { redirect } from 'next/navigation';
+import { toast } from '@/hooks/use-toast';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -12,6 +13,7 @@ interface LoginFormProps {
 }
 
 const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
+  const router = useRouter();
   const { register, handleSubmit } = useForm<{
     email: string;
     password: string;
@@ -25,24 +27,24 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
 
     console.log(result);
     if (result.success) {
-      // toast({
-      //   title: "Success",
-      //   description: "You have successfully signed in.",
-      // });
+      toast({
+        title: 'Success',
+        description: 'You have successfully signed in.',
+      });
 
-      console.log('success');
+      router.push('/dashboard');
     } else {
-      // toast({
-      //   title: "Error signing in",
-      //   description: result.error ?? "An error occurred.",
-      //   variant: "destructive",
-      // });
-      console.log('failed');
+      toast({
+        title: 'Error signing in',
+        description: result.error ?? 'An error occurred.',
+        variant: 'destructive',
+      });
     }
   };
 
   return (
     <div className="w-96 border p-4">
+      <h1 className="text-2xl text-primary font-bold mb-4">Login</h1>
       <form
         className="flex flex-col gap-3"
         onSubmit={handleSubmit(handleLogin)}>
@@ -60,7 +62,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
         />
         <button
           type="submit"
-          className="bg-blue-600 text-white p-2 rounded">
+          className="button-login text-white p-2 rounded">
           Masuk
         </button>
       </form>

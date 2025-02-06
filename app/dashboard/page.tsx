@@ -1,7 +1,9 @@
-import React from 'react';
+'use client';
+import { useLanguage } from '@/context/LanguageContext';
 
 const Page = () => {
-  return <div>Page</div>;
+  const { t } = useLanguage();
+  return <div>{t('dashboardPage')}</div>;
 };
 
 export default Page;

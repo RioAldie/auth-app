@@ -1,6 +1,5 @@
 import { signInWithCredentials } from '@/lib/auth';
 import LoginForm from '@/components/LoginForm';
-import React from 'react';
 
 const Page = () => {
   return (

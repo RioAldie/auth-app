@@ -1,5 +1,6 @@
 'use client';
 
+import { useLanguage } from '@/context/LanguageContext';
 import { toast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
 import React from 'react';
@@ -14,6 +15,7 @@ interface LoginFormProps {
 
 const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
   const router = useRouter();
+  const { t } = useLanguage();
   const { register, handleSubmit } = useForm<{
     email: string;
     password: string;
@@ -44,26 +46,28 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
 
   return (
     <div className="w-96 border p-4">
-      <h1 className="text-2xl text-primary font-bold mb-4">Login</h1>
+      <h1 className="text-2xl text-primary font-bold mb-4">
+        {t('login')}
+      </h1>
       <form
         className="flex flex-col gap-3"
         onSubmit={handleSubmit(handleLogin)}>
         <input
           {...register('email')}
           type="email"
-          placeholder="Email"
+          placeholder={t('email')}
           className="border p-2 rounded"
         />
         <input
           {...register('password')}
           type="password"
-          placeholder="Password"
+          placeholder={t('password')}
           className="border p-2 rounded"
         />
         <button
           type="submit"
           className="button-login text-white p-2 rounded">
-          Masuk
+          {t('login')}
         </button>
       </form>
     </div>

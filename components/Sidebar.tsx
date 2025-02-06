@@ -7,15 +7,17 @@ import { usePathname } from 'next/navigation';
 import { adminSideBarLinks } from '@/constant';
 import Link from 'next/link';
 import ButtonLogout from './ButtonLogout';
+import { useLanguage } from '@/context/LanguageContext';
 
 const Sidebar = () => {
   const pathname = usePathname();
+  const { t } = useLanguage();
 
   return (
     <div className="admin-sidebar">
       <div>
         <div className="logo">
-          <h1>Admin</h1>
+          <h1>{t('dashboard')}</h1>
         </div>
 
         <div className="mt-10 flex flex-col gap-5">
@@ -48,16 +50,25 @@ const Sidebar = () => {
                     className={cn(
                       isSelected ? 'text-white' : 'text-dark'
                     )}>
-                    {link.text}
+                    {link.text === 'Employee'
+                      ? t('employee')
+                      : link.text === 'Home'
+                      ? t('home')
+                      : link.text === 'Finance'
+                      ? t('finance')
+                      : link.text === 'Warehouse'
+                      ? t('warehouse')
+                      : link.text === 'Purchasing'
+                      ? t('purchasing')
+                      : link.text}
                   </p>
                 </div>
               </Link>
             );
           })}
-        </div>
-        <div>
           <ButtonLogout />
         </div>
+        <div></div>
       </div>
     </div>
   );

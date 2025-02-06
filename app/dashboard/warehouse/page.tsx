@@ -1,5 +1,10 @@
+'use client';
+
+import { useLanguage } from '@/context/LanguageContext';
+
 const Page = () => {
-  return <div> Warehouse Page</div>;
+  const { t } = useLanguage();
+  return <div> {t('warehousePage')}</div>;
 };
 
 export default Page;

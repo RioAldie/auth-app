@@ -5,10 +5,13 @@ import { signOutWithToken } from '@/lib/auth';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { toast } from '@/hooks/use-toast';
+import { cn } from '@/lib/utils';
+import { useLanguage } from '@/context/LanguageContext';
 
 const ButtonLogout = () => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const { t } = useLanguage();
 
   const handleLogout = async () => {
     setLoading(true);
@@ -36,11 +39,11 @@ const ButtonLogout = () => {
     <button
       onClick={handleLogout}
       disabled={loading}
-      className="flex items-center gap-2">
-      <div className="relative w-5 h-5">
+      className={cn('link', 'flex items-center gap-2')}>
+      <div className="relative size-5">
         <Image src="/icons/logout.svg" alt="icon" fill />
       </div>
-      <p>{loading ? 'Logging out...' : 'Logout'}</p>
+      <p>{loading ? '...' : t('logout')}</p>
     </button>
   );
 };

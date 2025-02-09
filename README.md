@@ -1,5 +1,15 @@
 # 📄 Sistem Login dengan Next.js & Node.js
 
+## Pengujian
+- Kunjingi link berikut untuk menguji sistem ini
+  [Frontend] (https://auth-app-rioaldie.vercel.app)
+- Gunakan email dan password berikut
+  ```
+   "email": "test@gmail.com"
+   "password": "rahasia"
+  ```
+- Mohon maaf karena saya tidak menyediakan fitur Signup, Terima kasih
+
 ## 📝 Tentang Proyek
 Proyek ini adalah sistem login sederhana yang dibangun menggunakan **Next.js** dan **Node.js**. Proyek ini menerapkan autentikasi berbasis **JWT** dengan **Next-Auth**, serta menggunakan **Prisma ORM** untuk mengelola database.
 

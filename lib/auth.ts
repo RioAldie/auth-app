@@ -8,6 +8,7 @@ export const signInWithCredentials = async (
 ) => {
   const { email, password } = params;
 
+  console.log(email, password);
   try {
     const result = await signIn('credentials', {
       email,

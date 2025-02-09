@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📄 Sistem Login dengan Next.js & Node.js
 
-## Getting Started
+## 📝 Tentang Proyek
+Proyek ini adalah sistem login sederhana yang dibangun menggunakan **Next.js** dan **Node.js**. Proyek ini menerapkan autentikasi berbasis **JWT** dengan **Next-Auth**, serta menggunakan **Prisma ORM** untuk mengelola database.
 
-First, run the development server:
+## 🛠 Tech Stack
+- **Next.js** 
+- **Next-Auth** – Untuk menangani autentikasi
+- **ShadCN-UI & Tailwind CSS** – Untuk desain tampilan
+- **TypeScript** 
+- **Prisma ORM** – Untuk menghubungkan backend dengan database
+- **Node.JS** 
+- **ExpressJS** 
 
+## 🔄 Alur Sistem
+1. Pengguna memasukkan **email** dan **password** melalui form login.
+2. Data dikirim ke **API**, lalu diteruskan ke **server backend**.
+3. Backend menerima permintaan, lalu memverifikasi data dalam **database** menggunakan **Prisma ORM**.
+4. Jika data valid, backend akan **menghasilkan token JWT** untuk autentikasi.
+5. Server mengembalikan respons berisi:
+   - **accessToken**
+   - **refreshToken**
+   - **email user**
+6. API mengirimkan respons tersebut ke frontend.
+7. Frontend menyimpan token dan mengatur status autentikasi.
+8. Jika login berhasil, pengguna diarahkan ke halaman dashboard.
+9. Jika login gagal, server mengembalikan **respons error**, dan frontend menampilkan pesan kesalahan menggunakan **toast notification**.
+
+## 📦 Instalasi & Setup
+
+### 1️⃣ Clone Repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/RioAldie/auth-app
+cd repository-name
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2️⃣ Instal Dependency
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3️⃣ Konfigurasi 
+Buat file `.env.local` di root proyek dan tambahkan variabel berikut:
+```env
+NEXT_PUBLIC_API_URL_PROD=https://auth-server-production-63b6.up.railway.app
+AUTH_KEY=$2a$15$eNwjIWAkgefgPjF3wwtBROqP0sQ3PRWyYccAwOhr4WiTJLadZeJPi
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 4️⃣ Menjalankan Proyek
+```bash
+npm run dev
+```
 
-## Learn More
+Proyek akan berjalan di `http://localhost:3000` 🚀
 
-To learn more about Next.js, take a look at the following resources:
+## 📝 Fitur Tambahan
+- **Ubah Bahasa** - untuk fitur ubah bahasa sendiri saya memanfaatkan useContext dan queryParameter dimana jika value lang: berubah otomatis bahasa diseluruh sistem saya akan ikut berubah
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
+Website ini bisa di akses di
+[Frontend] (https://auth-app-rioaldie.vercel.app)
+[Server] (https://auth-server-production-63b6.up.railway.app)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Terima Kasih Atas Kesempatannya! 🚀
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
